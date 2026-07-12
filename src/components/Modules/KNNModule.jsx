@@ -176,9 +176,11 @@ export default function KNNModule() {
     const rect = canvasRef.current.getBoundingClientRect()
     const scaleX = canvasRef.current.width / rect.width
     const scaleY = canvasRef.current.height / rect.height
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY
     return [
-      (e.clientX - rect.left) * scaleX,
-      (e.clientY - rect.top) * scaleY,
+      (clientX - rect.left) * scaleX,
+      (clientY - rect.top) * scaleY,
     ]
   }
 
@@ -378,12 +380,15 @@ export default function KNNModule() {
             ref={canvasRef}
             width={480}
             height={420}
-            className="rounded-xl border border-white/[0.06] cursor-crosshair max-w-full shadow-[0_0_40px_rgba(139,92,246,0.1)]"
+            className="rounded-xl border border-white/[0.06] cursor-crosshair max-w-full shadow-[0_0_40px_rgba(139,92,246,0.1)] touch-none"
             style={{ maxHeight: '100%', objectFit: 'contain' }}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
+            onTouchStart={handleMouseDown}
+            onTouchMove={handleMouseMove}
+            onTouchEnd={handleMouseUp}
           />
         </div>
       </div>

@@ -150,8 +150,11 @@ export default function DBSCANModule() {
     const scaleX = canvasRef.current.width / rect.width
     const scaleY = canvasRef.current.height / rect.height
     
-    const x = (e.clientX - rect.left) * scaleX
-    const y = (e.clientY - rect.top) * scaleY
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY
+
+    const x = (clientX - rect.left) * scaleX
+    const y = (clientY - rect.top) * scaleY
 
     let closest = null
     let minDist = Infinity
@@ -174,8 +177,10 @@ export default function DBSCANModule() {
     const rect = canvasRef.current.getBoundingClientRect()
     const scaleX = canvasRef.current.width / rect.width
     const scaleY = canvasRef.current.height / rect.height
-    const x = (e.clientX - rect.left) * scaleX
-    const y = (e.clientY - rect.top) * scaleY
+    const clientX = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX
+    const clientY = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY
+    const x = (clientX - rect.left) * scaleX
+    const y = (clientY - rect.top) * scaleY
     
     setPoints(prev => [...prev, { x, y }])
   }
@@ -407,7 +412,10 @@ labels = dbscan.fit_predict(X)`}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             onClick={handleCanvasClick}
-            className="rounded-xl border border-white/[0.06] max-w-full cursor-crosshair"
+            onTouchMove={handleMouseMove}
+            onTouchEnd={handleMouseLeave}
+            onTouchStart={handleCanvasClick}
+            className="rounded-xl border border-white/[0.06] max-w-full cursor-crosshair touch-none"
             style={{ maxHeight: '100%', objectFit: 'contain' }}
           />
         </div>

@@ -52,13 +52,24 @@ const GROUPS = [
   },
 ]
 
-export default function Sidebar({ activeTopic, setActiveTopic, onOpenDevCard }) {
+export default function Sidebar({ activeTopic, setActiveTopic, onOpenDevCard, isMobileMenuOpen, onCloseMenu }) {
   return (
-    <aside
-      className="hidden md:flex w-60 flex-col border-r border-white/[0.06] bg-surface-raised/50 backdrop-blur-md no-print"
-      data-no-print
-    >
-      <div className="flex-1 overflow-y-auto px-3 py-5">
+    <>
+      {/* Mobile Backdrop */}
+      {isMobileMenuOpen && (
+        <div 
+          className="md:hidden fixed inset-0 z-30 bg-slate-950/80 backdrop-blur-sm" 
+          onClick={onCloseMenu}
+        />
+      )}
+      <aside
+        className={cn(
+          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-white/[0.06] bg-surface-raised/95 backdrop-blur-md no-print transition-transform duration-300 ease-in-out md:static md:w-60 md:translate-x-0 md:bg-surface-raised/50",
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        )}
+        data-no-print
+      >
+        <div className="flex-1 overflow-y-auto px-3 py-5">
         {GROUPS.map((group) => (
           <div key={group.label} className="mb-5">
             <p className="mb-2 px-3 text-[10px] font-bold uppercase tracking-[0.15em] text-text-muted">
@@ -125,5 +136,6 @@ export default function Sidebar({ activeTopic, setActiveTopic, onOpenDevCard }) 
         </p>
       </div>
     </aside>
+    </>
   )
 }
