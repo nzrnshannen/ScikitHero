@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { Download } from 'lucide-react'
+import { Download, ChevronDown } from 'lucide-react'
 import { usePngExport } from '../../hooks/useExport.js'
 import { BlockMath, InlineMath } from 'react-katex'
 import {
@@ -53,6 +53,7 @@ export default function KNNModule() {
   const [query, setQuery] = useState([230, 230])
   const [dragging, setDragging] = useState(false)
   const [weights, setWeights] = useState('uniform')
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const allPoints = [
     ...CLASS_A.map((p) => ({ pos: p, cls: 'A' })),
@@ -213,6 +214,11 @@ export default function KNNModule() {
               KNN is a non-parametric, instance-based learning algorithm. It classifies a new
               data point by finding the <strong>K closest training examples</strong> in the
               feature space and assigning the majority class label.
+              {weights === 'distance' && (
+                <span className="block mt-3 text-emerald-400 bg-emerald-500/10 p-2.5 rounded-lg border border-emerald-500/20">
+                  <strong>Distance Weighting Active:</strong> Closer neighbors are given significantly more voting influence (calculated as <InlineMath math="1/d" />), meaning a very close neighbor can easily outvote several distant ones!
+                </span>
+              )}
             </p>
           </div>
           
@@ -323,17 +329,41 @@ export default function KNNModule() {
               className="w-24 accent-[#a78bfa]"
             />
           </label>
-          <label className="text-xs text-text-muted flex items-center gap-2 shrink-0">
-            Weights:
-            <select 
-              value={weights} 
-              onChange={e => setWeights(e.target.value)}
-              className="bg-white/[0.05] border border-white/[0.1] rounded px-2 py-1 text-xs text-white"
-            >
-              <option value="uniform">uniform</option>
-              <option value="distance">distance</option>
-            </select>
-          </label>
+          <div className="relative text-xs text-text-muted flex items-center gap-2 shrink-0">
+            <span>Weights:</span>
+            <div className="relative">
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="flex items-center justify-between w-28 bg-white/[0.05] border border-white/[0.1] rounded-lg px-3 py-1.5 text-white hover:bg-white/[0.1] transition-colors"
+              >
+                <span className="capitalize">{weights}</span>
+                <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+              </button>
+              
+              {isDropdownOpen && (
+                <>
+                  <div 
+                    className="fixed inset-0 z-40" 
+                    onClick={() => setIsDropdownOpen(false)} 
+                  />
+                  <div className="absolute top-full left-0 mt-2 w-32 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-50 overflow-hidden py-1">
+                    <button
+                      className={`w-full text-left px-3 py-2 text-sm text-white hover:bg-slate-800 transition-colors ${weights === 'uniform' ? 'bg-brand-500/20 text-brand-300' : ''}`}
+                      onClick={() => { setWeights('uniform'); setIsDropdownOpen(false) }}
+                    >
+                      Uniform
+                    </button>
+                    <button
+                      className={`w-full text-left px-3 py-2 text-sm text-white hover:bg-slate-800 transition-colors ${weights === 'distance' ? 'bg-brand-500/20 text-brand-300' : ''}`}
+                      onClick={() => { setWeights('distance'); setIsDropdownOpen(false) }}
+                    >
+                      Distance
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
           <button
             onClick={exportPng}
             className="ml-auto flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0"
