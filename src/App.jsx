@@ -18,6 +18,8 @@ import TuningModule from './components/Modules/TuningModule.jsx'
 import CheatSheetDrawer from './components/CheatSheetDrawer.jsx'
 import DeveloperCard from './components/Layout/DeveloperCard.jsx'
 import SplashScreen from './components/Layout/SplashScreen.jsx'
+import HeroBot from './components/Companion/HeroBot.jsx'
+import { BotProvider } from './lib/BotContext.jsx'
 
 const MODULES = {
   knn: KNNModule,
@@ -50,8 +52,9 @@ export default function App() {
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       </AnimatePresence>
 
-      <div className="flex h-[100dvh] flex-col overflow-hidden bg-surface">
-      <TopNavbar 
+      <BotProvider>
+        <div className="flex h-[100dvh] flex-col overflow-hidden bg-surface">
+        <TopNavbar 
         contentRef={contentRef} 
         activeTopic={activeTopic} 
         onToggleMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
@@ -86,7 +89,9 @@ export default function App() {
           </AnimatePresence>
         </main>
       </div>
+      <HeroBot activeTopic={activeTopic} />
     </div>
+    </BotProvider>
     </>
   )
 }
