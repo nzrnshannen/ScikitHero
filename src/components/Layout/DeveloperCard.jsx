@@ -14,7 +14,7 @@ export default function DeveloperCard({ isOpen, onClose }) {
     // Web3Forms endpoint integration
     // Note: To send emails to nzrnshannen.work1@gmail.com, 
     // generate an Access Key at https://web3forms.com/
-    formData.append("access_key", "YOUR_WEB3FORMS_ACCESS_KEY")
+    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY)
     formData.append("subject", "New Message from MachineHero Playground!")
     formData.append("from_name", "MachineHero App")
 
