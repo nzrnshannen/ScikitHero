@@ -39,6 +39,7 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(true)
   const [activeTopic, setActiveTopic] = useState('knn')
   const [isDevCardOpen, setIsDevCardOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const contentRef = useRef(null)
 
   const ActiveModule = MODULES[activeTopic]
@@ -50,12 +51,25 @@ export default function App() {
       </AnimatePresence>
 
       <div className="flex h-screen flex-col overflow-hidden bg-surface">
-      <TopNavbar contentRef={contentRef} activeTopic={activeTopic} />
+      <TopNavbar 
+        contentRef={contentRef} 
+        activeTopic={activeTopic} 
+        onToggleMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+      />
       <CheatSheetDrawer />
       <DeveloperCard isOpen={isDevCardOpen} onClose={() => setIsDevCardOpen(false)} />
 
-      <div className="flex flex-1 overflow-hidden">
-        <Sidebar activeTopic={activeTopic} setActiveTopic={setActiveTopic} onOpenDevCard={() => setIsDevCardOpen(true)} />
+      <div className="flex flex-1 overflow-hidden relative">
+        <Sidebar 
+          activeTopic={activeTopic} 
+          setActiveTopic={(topic) => {
+            setActiveTopic(topic)
+            setIsMobileMenuOpen(false)
+          }} 
+          onOpenDevCard={() => setIsDevCardOpen(true)} 
+          isMobileMenuOpen={isMobileMenuOpen}
+          onCloseMenu={() => setIsMobileMenuOpen(false)}
+        />
 
         <main ref={contentRef} className="flex-1 overflow-hidden print-white-bg">
           <AnimatePresence mode="wait">
