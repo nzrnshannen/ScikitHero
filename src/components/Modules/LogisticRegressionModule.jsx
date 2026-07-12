@@ -170,7 +170,7 @@ export default function LogisticRegressionModule() {
   return (
     <div className="flex h-full flex-col lg:flex-row">
       {/* Left Panel — Note */}
-      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg">
+      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg min-h-0">
         <div className="max-w-xl mx-auto space-y-5">
           <div>
             <AnimatedBadge color="#34d399">Supervised Learning</AnimatedBadge>
@@ -222,7 +222,7 @@ export default function LogisticRegressionModule() {
       </div>
 
       {/* Right Panel — Sandbox */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden min-h-0">
         <div className="flex flex-wrap items-center gap-4 border-b border-white/[0.06] px-4 py-2 bg-surface-raised/50 no-print" data-no-print>
           <label className="text-xs text-text-muted flex items-center gap-2 shrink-0">
             Weight: <span className="font-mono text-emerald-400 w-8">{weight.toFixed(1)}</span>
@@ -257,7 +257,7 @@ export default function LogisticRegressionModule() {
           </button>
         </div>
 
-        <div className="flex-1 flex items-center justify-center p-4 bg-[#0f1117]">
+        <div className="flex-1 flex items-center justify-center p-4 bg-[#0f1117] min-h-0">
           <canvas
             ref={canvasRef}
             width={500}

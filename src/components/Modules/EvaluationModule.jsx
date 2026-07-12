@@ -30,7 +30,7 @@ export default function EvaluationModule() {
   return (
     <div className="flex h-full flex-col lg:flex-row">
       {/* Left Panel — Note */}
-      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg">
+      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg min-h-0">
         <div className="max-w-xl mx-auto space-y-5">
           <div>
             <AnimatedBadge color="#3b82f6">Concepts & Lifecycle</AnimatedBadge>
@@ -86,12 +86,12 @@ export default function EvaluationModule() {
       </div>
 
       {/* Right Panel — Sandbox */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden min-h-0">
         <div className="flex items-center justify-between border-b border-white/[0.06] px-4 py-2 bg-surface-raised/50 no-print" data-no-print>
            <span className="text-xs text-text-muted font-semibold uppercase tracking-wider">Interactive Confusion Matrix</span>
         </div>
 
-        <div className="flex-1 flex flex-col items-center justify-center p-8 bg-[#0f1117] overflow-y-auto">
+        <div className="flex-1 flex flex-col items-center justify-center p-8 bg-[#0f1117] overflow-y-auto min-h-0">
            
            <div className="w-full max-w-lg mb-8">
               <div className="grid grid-cols-2 gap-4">
