@@ -8,6 +8,7 @@ import {
   LiveValue,
   SectionTitle,
 } from '../ui/AceternityComponents.jsx'
+import { useBotState } from '../../lib/BotContext.jsx'
 
 // Pre-seeded data: two classes of points
 const CLASS_A = [
@@ -54,6 +55,12 @@ export default function KNNModule() {
   const [dragging, setDragging] = useState(false)
   const [weights, setWeights] = useState('uniform')
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  
+  const { setSandboxState } = useBotState()
+
+  useEffect(() => {
+    setSandboxState('knn', { k, weights, query })
+  }, [k, weights, query, setSandboxState])
 
   const allPoints = [
     ...CLASS_A.map((p) => ({ pos: p, cls: 'A' })),
