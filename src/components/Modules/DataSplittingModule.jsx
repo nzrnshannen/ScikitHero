@@ -15,7 +15,7 @@ export default function DataSplittingModule() {
   return (
     <div className="flex h-full flex-col lg:flex-row">
       {/* Left Panel — Note */}
-      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg">
+      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg min-h-0">
         <div className="max-w-xl mx-auto space-y-5">
           <div>
             <AnimatedBadge color="#f43f5e">Concepts & Lifecycle</AnimatedBadge>
@@ -73,7 +73,7 @@ X_test_scaled = scaler.transform(X_test)`}
       </div>
 
       {/* Right Panel — Sandbox */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden min-h-0">
         <div className="flex items-center justify-between border-b border-white/[0.06] px-4 py-2 bg-surface-raised/50 no-print">
           <div className="flex items-center gap-4">
              <label className="text-xs text-text-muted flex items-center gap-2">
@@ -99,7 +99,7 @@ X_test_scaled = scaler.transform(X_test)`}
           </div>
         </div>
 
-        <div className="flex-1 flex items-center justify-center p-8 bg-[#0f1117] overflow-y-auto">
+        <div className="flex-1 flex items-center justify-center p-8 bg-[#0f1117] overflow-y-auto min-h-0">
            <div className="w-full max-w-2xl space-y-8">
              
              {/* Raw Data Block */}

@@ -50,7 +50,7 @@ export default function App() {
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       </AnimatePresence>
 
-      <div className="flex h-screen flex-col overflow-hidden bg-surface">
+      <div className="flex h-[100dvh] flex-col overflow-hidden bg-surface">
       <TopNavbar 
         contentRef={contentRef} 
         activeTopic={activeTopic} 

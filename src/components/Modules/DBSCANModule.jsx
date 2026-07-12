@@ -257,7 +257,7 @@ export default function DBSCANModule() {
   return (
     <div className="flex h-full flex-col lg:flex-row">
       {/* Left Panel — Notes */}
-      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg">
+      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg min-h-0">
         <div className="max-w-xl mx-auto space-y-5">
           <div>
             <AnimatedBadge color="#10b981">Unsupervised Learning</AnimatedBadge>
@@ -354,7 +354,7 @@ labels = dbscan.fit_predict(X)`}
       </div>
 
       {/* Right Panel — Sandbox */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden min-h-0">
         {/* Top toolbar */}
         <div className="flex flex-wrap items-center gap-4 border-b border-white/[0.06] px-4 py-2 bg-surface-raised/50 no-print" data-no-print>
           <label className="text-xs text-text-muted flex items-center gap-2 shrink-0 whitespace-nowrap">
@@ -399,7 +399,7 @@ labels = dbscan.fit_predict(X)`}
         </div>
 
         {/* Canvas Area */}
-        <div className="flex-1 flex flex-col items-center justify-center p-4 bg-[#0f1117] relative">
+        <div className="flex-1 flex flex-col items-center justify-center p-4 bg-[#0f1117] relative min-h-0">
           <div className="absolute top-6 flex items-center gap-2 text-xs text-text-muted bg-black/50 px-3 py-1.5 rounded-full border border-white/[0.05] pointer-events-none">
             <MousePointer2 className="w-3.5 h-3.5" />
             Hover to view ε radius. Click anywhere to add a point.

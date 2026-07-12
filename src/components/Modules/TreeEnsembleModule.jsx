@@ -290,7 +290,7 @@ export default function TreeEnsembleModule() {
   return (
     <div className="flex h-full flex-col lg:flex-row">
       {/* Left Panel — Note */}
-      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg">
+      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg min-h-0">
         <div className="max-w-xl mx-auto space-y-5">
           <div>
             <AnimatedBadge color="#f59e0b">Supervised Learning</AnimatedBadge>

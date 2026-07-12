@@ -234,7 +234,7 @@ export default function TuningModule() {
       <canvas ref={bgCanvasRef} width={CANVAS_W} height={CANVAS_H} className="hidden" />
 
       {/* Left Panel — Note */}
-      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg">
+      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg min-h-0">
         <div className="max-w-xl mx-auto space-y-5">
           <div>
             <AnimatedBadge color="#ec4899">Evaluation & Selection</AnimatedBadge>
@@ -291,7 +291,7 @@ export default function TuningModule() {
       </div>
 
       {/* Right Panel — Sandbox */}
-      <div className="flex-1 flex flex-col overflow-hidden bg-[#0f1117]">
+      <div className="flex-1 flex flex-col overflow-hidden bg-[#0f1117] min-h-0">
         {/* Top toolbar */}
         <div className="flex flex-wrap items-center gap-4 p-4 border-b border-white/[0.06] bg-surface-raised/50 no-print" data-no-print>
            <div className="flex gap-1 bg-white/[0.05] p-1 rounded-lg border border-white/[0.06]">
@@ -336,7 +336,7 @@ export default function TuningModule() {
         </div>
 
         {/* Feature Grid Panel */}
-        <div className="flex-1 flex flex-col items-center justify-center p-6 gap-6 overflow-y-auto">
+        <div className="flex-1 flex flex-col items-center justify-center p-6 gap-6 overflow-y-auto min-h-0">
            
            <div className="relative shrink-0">
               <canvas

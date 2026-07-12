@@ -149,7 +149,7 @@ export default function RegularizationModule() {
   return (
     <div className="flex h-full flex-col lg:flex-row">
       {/* Left Panel — Note */}
-      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg">
+      <div className="flex-1 overflow-y-auto p-6 border-r border-white/[0.06] print-white-bg min-h-0">
         <div className="max-w-xl mx-auto space-y-5">
           <div>
             <AnimatedBadge color="#8b5cf6">Supervised Learning</AnimatedBadge>
@@ -203,7 +203,7 @@ export default function RegularizationModule() {
       </div>
 
       {/* Right Panel — Sandbox */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden min-h-0">
         <div className="flex flex-wrap items-center gap-4 border-b border-white/[0.06] px-4 py-2 bg-surface-raised/50 no-print" data-no-print>
           <div className="flex gap-1 bg-white/[0.05] p-1 rounded-lg border border-white/[0.06] shrink-0">
              <button
@@ -236,7 +236,7 @@ export default function RegularizationModule() {
           </button>
         </div>
 
-        <div className="flex-1 flex items-center justify-center p-4 bg-[#0f1117]">
+        <div className="flex-1 flex items-center justify-center p-4 bg-[#0f1117] min-h-0">
           <canvas
             ref={canvasRef}
             width={400}
