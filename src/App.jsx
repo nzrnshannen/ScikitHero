@@ -17,6 +17,7 @@ import DBSCANModule from './components/Modules/DBSCANModule.jsx'
 import TuningModule from './components/Modules/TuningModule.jsx'
 import CheatSheetDrawer from './components/CheatSheetDrawer.jsx'
 import DeveloperCard from './components/Layout/DeveloperCard.jsx'
+import SplashScreen from './components/Layout/SplashScreen.jsx'
 
 const MODULES = {
   knn: KNNModule,
@@ -35,6 +36,7 @@ const MODULES = {
 }
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true)
   const [activeTopic, setActiveTopic] = useState('knn')
   const [isDevCardOpen, setIsDevCardOpen] = useState(false)
   const contentRef = useRef(null)
@@ -42,7 +44,12 @@ export default function App() {
   const ActiveModule = MODULES[activeTopic]
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-surface">
+    <>
+      <AnimatePresence>
+        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+      </AnimatePresence>
+
+      <div className="flex h-screen flex-col overflow-hidden bg-surface">
       <TopNavbar contentRef={contentRef} activeTopic={activeTopic} />
       <CheatSheetDrawer />
       <DeveloperCard isOpen={isDevCardOpen} onClose={() => setIsDevCardOpen(false)} />
@@ -66,5 +73,6 @@ export default function App() {
         </main>
       </div>
     </div>
+    </>
   )
 }
