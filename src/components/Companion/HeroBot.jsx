@@ -46,14 +46,17 @@ CURRENT CONTEXT:
 
 export default function HeroBot({ activeTopic }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { role: 'model', content: "Hi! I'm HeroBot 🤖. How can I help you understand this topic better?" }
-  ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  
   const messagesEndRef = useRef(null);
-  const { getSandboxState } = useBotState();
+
+  const { getSandboxState, chatHistory, addChatMessage, updateLastChatMessage, replaceLastChatMessage } = useBotState();
+  
+  const messages = chatHistory.filter(msg => msg.topic === activeTopic);
+  const displayMessages = messages.length > 0 
+    ? messages 
+    : [{ role: 'model', content: "Hi! I'm HeroBot 🤖. How can I help you understand this topic better?" }];
+
 
   const chips = TOPIC_CHIPS[activeTopic] || TOPIC_CHIPS.default;
 
@@ -63,13 +66,13 @@ export default function HeroBot({ activeTopic }) {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, isLoading]);
+  }, [displayMessages, isLoading]);
 
   const handleSend = async (text) => {
     if (!text.trim()) return;
 
     const userMsg = { role: 'user', content: text };
-    setMessages(prev => [...prev, userMsg]);
+    addChatMessage(activeTopic, 'user', text);
     setInputValue('');
     setIsLoading(true);
 
@@ -80,30 +83,23 @@ export default function HeroBot({ activeTopic }) {
 Active Module: ${activeTopic}
 Current Sandbox State: ${JSON.stringify(currentSandboxState, null, 2)}`;
 
-    const newMessages = [...messages, userMsg];
+    const newMessagesForGemini = [...messages.map(m => ({ role: m.role, content: m.content })), userMsg];
     
     // Add placeholder for streaming response
-    setMessages(prev => [...prev, { role: 'model', content: '' }]);
+    addChatMessage(activeTopic, 'model', '');
 
     streamGeminiChat(
-      newMessages,
+      newMessagesForGemini,
       dynamicSystemPrompt,
       (chunk) => {
-        setMessages(prev => {
-          const last = prev[prev.length - 1];
-          const rest = prev.slice(0, -1);
-          return [...rest, { ...last, content: last.content + chunk }];
-        });
+        updateLastChatMessage(chunk);
       },
       () => {
         setIsLoading(false);
       },
       (error) => {
         setIsLoading(false);
-        setMessages(prev => {
-          const rest = prev.slice(0, -1);
-          return [...rest, { role: 'model', content: `Oops! Something went wrong: ${error.message}` }];
-        });
+        replaceLastChatMessage(`Oops! Something went wrong: ${error.message}`);
       }
     );
   };
@@ -140,7 +136,7 @@ Current Sandbox State: ${JSON.stringify(currentSandboxState, null, 2)}`;
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
-              {messages.map((msg, i) => (
+              {displayMessages.map((msg, i) => (
                 <div 
                   key={i} 
                   className={cn(
@@ -165,7 +161,7 @@ Current Sandbox State: ${JSON.stringify(currentSandboxState, null, 2)}`;
             </div>
 
             {/* Quick Chips */}
-            {messages.length === 1 && (
+            {displayMessages.length === 1 && (
               <div className="px-4 pb-2 flex flex-wrap gap-2">
                 {chips.map((chip, idx) => (
                   <button
