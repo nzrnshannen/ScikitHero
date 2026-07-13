@@ -1,6 +1,8 @@
 import { FileDown, Cpu, Sparkles, Menu } from 'lucide-react'
 import { usePdfExport } from '../hooks/useExport.js'
 import { ShimmerButton } from './ui/AceternityComponents.jsx'
+import ExportPreviewModal from './Export/ExportPreviewModal.jsx'
+import { useState } from 'react'
 
 const TOPIC_LABELS = {
   knn: 'K-Nearest Neighbors',
@@ -11,13 +13,25 @@ const TOPIC_LABELS = {
 }
 
 export default function TopNavbar({ contentRef, activeTopic, onToggleMenu }) {
-  const exportPdf = usePdfExport(contentRef, activeTopic)
+  const exportPdf = usePdfExport()
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false)
+
+  const handleExport = async (options) => {
+    await exportPdf(options)
+  }
 
   return (
-    <header
-      className="flex h-14 items-center justify-between border-b border-white/[0.06] bg-surface-raised/80 px-4 sm:px-6 backdrop-blur-xl z-20 no-print"
-      data-no-print
-    >
+    <>
+      <ExportPreviewModal 
+        isOpen={isExportModalOpen} 
+        onClose={() => setIsExportModalOpen(false)} 
+        onExport={handleExport} 
+        activeTopic={activeTopic}
+      />
+      <header
+        className="flex h-14 items-center justify-between border-b border-white/[0.06] bg-surface-raised/80 px-4 sm:px-6 backdrop-blur-xl z-20 no-print"
+        data-no-print
+      >
       <div className="flex items-center gap-3">
         <button 
           onClick={onToggleMenu}
@@ -43,12 +57,13 @@ export default function TopNavbar({ contentRef, activeTopic, onToggleMenu }) {
           <Sparkles className="h-3 w-3 text-brand-400" />
           <span className="text-[10px] font-medium text-brand-300">Interactive Live</span>
         </div>
-        <ShimmerButton onClick={exportPdf}>
+        <ShimmerButton onClick={() => setIsExportModalOpen(true)}>
           <FileDown className="h-4 w-4" />
-          <span className="hidden sm:inline">Export Full Chapter (PDF)</span>
+          <span className="hidden sm:inline">Export</span>
           <span className="sm:hidden">PDF</span>
         </ShimmerButton>
       </div>
     </header>
+    </>
   )
 }

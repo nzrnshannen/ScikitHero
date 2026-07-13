@@ -2,40 +2,12 @@ import { useState, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import TopNavbar from './components/TopNavbar.jsx'
 import Sidebar from './components/Sidebar.jsx'
-import KNNModule from './components/Modules/KNNModule.jsx'
-import LinearRegressionModule from './components/Modules/LinearRegressionModule.jsx'
-import KMeansModule from './components/Modules/KMeansModule.jsx'
-import PCAModule from './components/Modules/PCAModule.jsx'
-import PreprocessingModule from './components/Modules/PreprocessingModule.jsx'
-import DataSplittingModule from './components/Modules/DataSplittingModule.jsx'
-import LogisticRegressionModule from './components/Modules/LogisticRegressionModule.jsx'
-import RegularizationModule from './components/Modules/RegularizationModule.jsx'
-import TreeEnsembleModule from './components/Modules/TreeEnsembleModule.jsx'
-import EvaluationModule from './components/Modules/EvaluationModule.jsx'
-import SVMModule from './components/Modules/SVMModule.jsx'
-import DBSCANModule from './components/Modules/DBSCANModule.jsx'
-import TuningModule from './components/Modules/TuningModule.jsx'
+import { MODULE_COMPONENTS as MODULES } from './lib/curriculum.js'
 import CheatSheetDrawer from './components/CheatSheetDrawer.jsx'
 import DeveloperCard from './components/Layout/DeveloperCard.jsx'
 import SplashScreen from './components/Layout/SplashScreen.jsx'
 import HeroBot from './components/Companion/HeroBot.jsx'
 import { BotProvider } from './lib/BotContext.jsx'
-
-const MODULES = {
-  knn: KNNModule,
-  linear_regression: LinearRegressionModule,
-  ridge_lasso: RegularizationModule,
-  logistic_regression: LogisticRegressionModule,
-  decision_trees: TreeEnsembleModule,
-  svm: SVMModule,
-  kmeans: KMeansModule,
-  dbscan: DBSCANModule,
-  pca: PCAModule,
-  preprocessing: PreprocessingModule,
-  data_splitting: DataSplittingModule,
-  metrics: EvaluationModule,
-  tuning: TuningModule,
-}
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true)
