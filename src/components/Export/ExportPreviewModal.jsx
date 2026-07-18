@@ -217,7 +217,7 @@ export default function ExportPreviewModal({ isOpen, onClose, onExport, activeTo
                   return (
                     <div 
                       key={topicId} 
-                      className={`chapter-page layout-${chartLayout} bg-surface flex flex-col border border-slate-800/60 shadow-2xl shadow-black/50 rounded-md w-[210mm] min-h-[297mm] overflow-visible relative shrink-0`}
+                      className={`chapter-page printing layout-${chartLayout} flex flex-col border border-slate-800/60 shadow-2xl shadow-black/50 rounded-md w-[210mm] min-h-[297mm] overflow-visible relative shrink-0`}
                     >
                        <div className="flex-1 w-full flex flex-col relative min-h-[297mm] h-max">
                          <ModuleComponent />
