@@ -56,6 +56,16 @@ body {
 /* Force modules to single column layout for printing */
 .printing .lg\:flex-row {
   flex-direction: column !important;
+  height: auto !important;
+}
+
+.printing .overflow-y-auto,
+.printing .overflow-hidden {
+  overflow: visible !important;
+}
+
+.printing .min-h-0 {
+  min-height: auto !important;
 }
 
 .printing .print-white-bg {

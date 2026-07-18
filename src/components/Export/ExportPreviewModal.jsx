@@ -188,9 +188,9 @@ export default function ExportPreviewModal({ isOpen, onClose, onExport, activeTo
                   return (
                     <div 
                       key={topicId} 
-                      className="chapter-page bg-surface flex flex-col border border-slate-800/60 shadow-2xl shadow-black/50 rounded-md w-[210mm] min-h-[297mm] overflow-hidden relative shrink-0"
+                      className="chapter-page bg-surface flex flex-col border border-slate-800/60 shadow-2xl shadow-black/50 rounded-md w-[210mm] min-h-[297mm] overflow-visible relative shrink-0"
                     >
-                       <div className="flex-1 w-full flex flex-col relative h-[297mm]">
+                       <div className="flex-1 w-full flex flex-col relative min-h-[297mm] h-max">
                          <ModuleComponent />
                        </div>
                        
