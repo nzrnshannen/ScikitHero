@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, FileDown, CheckSquare, Square, FileText, Layers, Loader2, PanelBottom, PanelRight } from 'lucide-react'
+import { X, FileDown, CheckSquare, Square, FileText, Layers, Loader2, PanelBottom, PanelRight, LayoutTemplate } from 'lucide-react'
 import { useState, useRef } from 'react'
 import { GROUPS, MODULE_COMPONENTS } from '../../lib/curriculum.js'
 import { useBotState } from '../../lib/BotContext.jsx'
@@ -63,105 +63,105 @@ export default function ExportPreviewModal({ isOpen, onClose, onExport, activeTo
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/80 backdrop-blur-md"
+            className="absolute inset-0 bg-surface-raised/80 backdrop-blur-md"
+            onClick={onClose}
           />
 
           {/* Modal Container */}
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="relative w-full h-full max-w-[1600px] bg-slate-900 border border-slate-700/80 overflow-hidden flex flex-col md:flex-row rounded-3xl shadow-2xl"
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            className="relative w-full h-full max-w-[1600px] bg-surface border border-border-medium overflow-hidden flex flex-col md:flex-row rounded-3xl shadow-2xl"
           >
             {/* Close Button (Mobile Absolute) */}
             <button
               onClick={onClose}
-              disabled={isExporting}
-              className="md:hidden absolute top-4 right-4 z-50 p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white"
+              className="md:hidden absolute top-4 right-4 z-50 p-2 rounded-full bg-surface-overlay text-text-secondary hover:text-text-primary"
             >
               <X className="w-5 h-5" />
             </button>
 
-            {/* Left Panel: Scope Control Settings */}
-            <div className="w-full md:w-80 lg:w-[400px] flex flex-col bg-slate-900 border-b md:border-b-0 md:border-r border-slate-800 relative z-10 shrink-0 max-h-[50vh] md:max-h-full">
+            {/* Left Sidebar - Options */}
+            <div className="w-full md:w-80 lg:w-[400px] flex flex-col bg-surface border-b md:border-b-0 md:border-r border-border-medium relative z-10 shrink-0 max-h-[50vh] md:max-h-full">
               <div className="p-6 md:p-8 flex-1 overflow-y-auto">
                 <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-white mb-2">Export Document</h2>
-                  <p className="text-sm text-slate-400 leading-relaxed">
-                    Configure your export scope and preview the exact layout before generating the PDF.
+                  <h2 className="text-2xl font-bold text-text-primary mb-2">Export Document</h2>
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    Generate a comprehensive PDF guide covering your interactive lesson configurations.
                   </p>
                 </div>
 
                 <div className="space-y-6">
                   {/* Scope Selection */}
                   <div className="space-y-3">
-                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Export Scope</label>
+                    <label className="text-xs font-bold text-text-muted uppercase tracking-wider">Export Scope</label>
                     <div className="grid gap-3">
                       <button 
                         onClick={() => setScope('current')}
-                        className={`flex flex-col text-left p-4 rounded-xl border transition-all ${scope === 'current' ? 'bg-brand-500/10 border-brand-500/50' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}
+                        className={`flex flex-col text-left p-4 rounded-xl border transition-all ${scope === 'current' ? 'bg-brand-500/10 border-brand-500/50' : 'bg-surface-overlay border-border-medium hover:border-border-heavy'}`}
                       >
                         <div className="flex items-center gap-2 mb-1">
-                          <FileText className={`w-4 h-4 ${scope === 'current' ? 'text-brand-400' : 'text-slate-400'}`} />
-                          <span className={`font-medium ${scope === 'current' ? 'text-brand-300' : 'text-slate-200'}`}>Current Chapter</span>
+                          <FileText className={`w-4 h-4 ${scope === 'current' ? 'text-brand-400' : 'text-text-muted'}`} />
+                          <span className={`font-medium ${scope === 'current' ? 'text-brand-300' : 'text-text-primary'}`}>Current Chapter</span>
                         </div>
-                        <span className="text-xs text-slate-400 pl-6">Capture strictly the active lesson.</span>
+                        <span className="text-xs text-text-secondary pl-6">Capture strictly the active lesson.</span>
                       </button>
 
                       <button 
                         onClick={() => setScope('all')}
-                        className={`flex flex-col text-left p-4 rounded-xl border transition-all ${scope === 'all' ? 'bg-brand-500/10 border-brand-500/50' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}
+                        className={`flex flex-col text-left p-4 rounded-xl border transition-all ${scope === 'all' ? 'bg-brand-500/10 border-brand-500/50' : 'bg-surface-overlay border-border-medium hover:border-border-heavy'}`}
                       >
                         <div className="flex items-center gap-2 mb-1">
-                          <Layers className={`w-4 h-4 ${scope === 'all' ? 'text-brand-400' : 'text-slate-400'}`} />
-                          <span className={`font-medium ${scope === 'all' ? 'text-brand-300' : 'text-slate-200'}`}>Full Textbook</span>
+                          <Layers className={`w-4 h-4 ${scope === 'all' ? 'text-brand-400' : 'text-text-muted'}`} />
+                          <span className={`font-medium ${scope === 'all' ? 'text-brand-300' : 'text-text-primary'}`}>Full Textbook</span>
                         </div>
-                        <span className="text-xs text-slate-400 pl-6">Sequentially compile all {GROUPS.reduce((acc, g) => acc + g.items.length, 0)} chapters.</span>
+                        <span className="text-xs text-text-secondary pl-6">Sequentially compile all {GROUPS.reduce((acc, g) => acc + g.items.length, 0)} chapters.</span>
                       </button>
                     </div>
                   </div>
 
                   {/* Layout Selection */}
                   <div className="space-y-3">
-                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Chart Layout</label>
+                    <label className="text-xs font-bold text-text-muted uppercase tracking-wider">Chart Layout</label>
                     <div className="grid gap-3">
                       <button 
                         onClick={() => setChartLayout('bottom')}
-                        className={`flex flex-col text-left p-4 rounded-xl border transition-all ${chartLayout === 'bottom' ? 'bg-brand-500/10 border-brand-500/50' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}
+                        className={`flex flex-col text-left p-4 rounded-xl border transition-all ${chartLayout === 'bottom' ? 'bg-brand-500/10 border-brand-500/50' : 'bg-surface-overlay border-border-medium hover:border-border-heavy'}`}
                       >
                         <div className="flex items-center gap-2 mb-1">
-                          <PanelBottom className={`w-4 h-4 ${chartLayout === 'bottom' ? 'text-brand-400' : 'text-slate-400'}`} />
-                          <span className={`font-medium ${chartLayout === 'bottom' ? 'text-brand-300' : 'text-slate-200'}`}>Stacked (Bottom)</span>
+                          <PanelBottom className={`w-4 h-4 ${chartLayout === 'bottom' ? 'text-brand-400' : 'text-text-muted'}`} />
+                          <span className={`font-medium ${chartLayout === 'bottom' ? 'text-brand-300' : 'text-text-primary'}`}>Stacked (Bottom)</span>
                         </div>
-                        <span className="text-xs text-slate-400 pl-6">Chart spans full width below the lesson text.</span>
+                        <span className="text-xs text-text-secondary pl-6">Chart spans full width below the lesson text.</span>
                       </button>
 
                       <button 
                         onClick={() => setChartLayout('right')}
-                        className={`flex flex-col text-left p-4 rounded-xl border transition-all ${chartLayout === 'right' ? 'bg-brand-500/10 border-brand-500/50' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}
+                        className={`flex flex-col text-left p-4 rounded-xl border transition-all ${chartLayout === 'right' ? 'bg-brand-500/10 border-brand-500/50' : 'bg-surface-overlay border-border-medium hover:border-border-heavy'}`}
                       >
                         <div className="flex items-center gap-2 mb-1">
-                          <PanelRight className={`w-4 h-4 ${chartLayout === 'right' ? 'text-brand-400' : 'text-slate-400'}`} />
-                          <span className={`font-medium ${chartLayout === 'right' ? 'text-brand-300' : 'text-slate-200'}`}>Side-by-Side (Right)</span>
+                          <PanelRight className={`w-4 h-4 ${chartLayout === 'right' ? 'text-brand-400' : 'text-text-muted'}`} />
+                          <span className={`font-medium ${chartLayout === 'right' ? 'text-brand-300' : 'text-text-primary'}`}>Side-by-Side (Right)</span>
                         </div>
-                        <span className="text-xs text-slate-400 pl-6">Chart sits next to the lesson text (best for wide pages).</span>
+                        <span className="text-xs text-text-secondary pl-6">Chart sits next to the lesson text (best for wide pages).</span>
                       </button>
                     </div>
                   </div>
 
                   {/* Options */}
                   <div className="space-y-3">
-                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Options</label>
+                    <label className="text-xs font-bold text-text-muted uppercase tracking-wider">Options</label>
                     <button 
                       onClick={() => setIncludeChat(!includeChat)}
-                      className="flex items-start gap-3 w-full text-left p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                      className="flex items-start gap-3 w-full text-left p-4 rounded-xl bg-surface-overlay border border-border-medium hover:border-border-heavy transition-colors"
                     >
                       <div className="mt-0.5 text-brand-400 shrink-0">
-                        {includeChat ? <CheckSquare className="w-5 h-5" /> : <Square className="w-5 h-5 text-slate-500" />}
+                        {includeChat ? <CheckSquare className="w-5 h-5" /> : <Square className="w-5 h-5 text-text-muted" />}
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-slate-200 mb-1">Include HeroBot Discussions</div>
-                        <div className="text-xs text-slate-400 leading-relaxed">
+                        <div className="text-sm font-medium text-text-primary mb-1">Include HeroBot Discussions</div>
+                        <div className="text-xs text-text-secondary leading-relaxed">
                           Append relevant HeroBot discussions as a Q&A appendix at the end of each corresponding chapter block.
                         </div>
                       </div>
@@ -171,7 +171,7 @@ export default function ExportPreviewModal({ isOpen, onClose, onExport, activeTo
               </div>
 
               {/* Action Area */}
-              <div className="p-6 border-t border-slate-800 bg-slate-900/50">
+              <div className="p-6 border-t border-border-medium bg-surface-overlay">
                 <button
                   onClick={handleExport}
                   disabled={isExporting}
@@ -192,20 +192,17 @@ export default function ExportPreviewModal({ isOpen, onClose, onExport, activeTo
                 <button
                   onClick={onClose}
                   disabled={isExporting}
-                  className="w-full mt-3 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors disabled:opacity-50"
+                  className="w-full mt-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors disabled:opacity-50"
                 >
                   Cancel
                 </button>
               </div>
             </div>
 
-            {/* Right Panel: WYSIWYG Print Preview Canvas */}
-            <div className="flex-1 bg-slate-950 p-6 md:p-12 overflow-y-auto flex flex-col items-center gap-12 relative shadow-inner">
-              <div className="absolute top-4 left-6 text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
+            {/* Right Side - Preview */}
+            <div className="flex-1 bg-surface-raised p-6 md:p-12 overflow-y-auto flex flex-col items-center gap-12 relative shadow-inner">
+              <div className="absolute top-4 left-6 text-xs font-bold text-text-muted uppercase tracking-wider flex items-center gap-2">
+                <LayoutTemplate className="w-4 h-4" />
                 Live Preview
               </div>
               
@@ -215,20 +212,21 @@ export default function ExportPreviewModal({ isOpen, onClose, onExport, activeTo
                   if (!ModuleComponent) return null;
                   
                   return (
-                    <div 
-                      key={topicId} 
-                      className={`chapter-page printing layout-${chartLayout} flex flex-col border border-slate-800/60 shadow-2xl shadow-black/50 rounded-md w-[210mm] min-h-[297mm] overflow-visible relative shrink-0`}
-                    >
-                       <div className="flex-1 w-full flex flex-col relative min-h-[297mm] h-max">
-                         <ModuleComponent />
-                       </div>
-                       
-                       {/* Chat transcript */}
-                       {includeChat && renderChatAppendix(topicId) && (
-                         <div className="p-[20mm] bg-surface-raised border-t border-white/[0.04]">
-                           {renderChatAppendix(topicId)}
+                    <div key={topicId} className="relative">
+                      <div 
+                        className={`chapter-page printing layout-${chartLayout} flex flex-col border border-border-medium shadow-2xl shadow-black/10 rounded-md w-[210mm] min-h-[297mm] overflow-visible relative shrink-0 bg-surface text-text-primary`}
+                      >
+                         <div className="flex-1 w-full flex flex-col relative min-h-[297mm] h-max">
+                           <ModuleComponent />
                          </div>
-                       )}
+                         
+                         {/* Chat transcript */}
+                         {includeChat && renderChatAppendix(topicId) && (
+                           <div className="p-[20mm] bg-surface-raised border-t border-border-subtle">
+                             {renderChatAppendix(topicId)}
+                           </div>
+                         )}
+                      </div>
                     </div>
                   )
                 })}

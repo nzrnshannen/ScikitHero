@@ -34,7 +34,7 @@ export default function DataSplittingModule() {
               <AlertTriangle className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
               <p className="text-sm text-text-secondary">
                 <strong className="text-red-400 block mb-1">Critical Error: Scaling before splitting.</strong>
-                If you apply a <code className="text-xs bg-black/30 px-1 rounded">StandardScaler</code> (or any transformation relying on dataset properties like mean/min/max) to your <em>entire</em> dataset before splitting, information from the test set "leaks" into the training set. The model's evaluation metrics will be artificially high and misleading.
+                If you apply a <code className="text-xs bg-surface-overlay/50 px-1 rounded">StandardScaler</code> (or any transformation relying on dataset properties like mean/min/max) to your <em>entire</em> dataset before splitting, information from the test set "leaks" into the training set. The model's evaluation metrics will be artificially high and misleading.
               </p>
             </div>
             
@@ -108,7 +108,7 @@ X_test_scaled = scaler.transform(X_test)`}
                  <Database className="h-5 w-5 text-text-muted" />
                  <span className="text-sm font-semibold text-text-secondary">Raw Dataset (100%)</span>
                </div>
-               <ArrowRight className="h-6 w-6 text-white/[0.2] my-4 rotate-90" />
+               <ArrowRight className="h-6 w-6 text-text-primary/[0.2] my-4 rotate-90" />
              </div>
 
              {/* Split blocks */}
@@ -125,7 +125,7 @@ X_test_scaled = scaler.transform(X_test)`}
                   </div>
                   
                   <div className="flex justify-center">
-                    <ArrowRight className="h-6 w-6 text-white/[0.2] rotate-90" />
+                    <ArrowRight className="h-6 w-6 text-text-primary/[0.2] rotate-90" />
                   </div>
 
                   {/* Preprocessing block */}
@@ -137,7 +137,7 @@ X_test_scaled = scaler.transform(X_test)`}
                   </div>
 
                   <div className="flex justify-center">
-                    <ArrowRight className="h-6 w-6 text-white/[0.2] rotate-90" />
+                    <ArrowRight className="h-6 w-6 text-text-primary/[0.2] rotate-90" />
                   </div>
 
                   {/* Model Training */}
@@ -159,7 +159,7 @@ X_test_scaled = scaler.transform(X_test)`}
                   </div>
 
                   <div className="flex justify-center">
-                    <ArrowRight className="h-6 w-6 text-white/[0.2] rotate-90" />
+                    <ArrowRight className="h-6 w-6 text-text-primary/[0.2] rotate-90" />
                   </div>
 
                   {/* Preprocessing Transform */}
@@ -171,7 +171,7 @@ X_test_scaled = scaler.transform(X_test)`}
                   </div>
 
                   <div className="flex justify-center">
-                    <ArrowRight className="h-6 w-6 text-white/[0.2] rotate-90" />
+                    <ArrowRight className="h-6 w-6 text-text-primary/[0.2] rotate-90" />
                   </div>
 
                    {/* Model Evaluation */}

@@ -2,6 +2,7 @@ import { FileDown, Cpu, Sparkles, Menu } from 'lucide-react'
 import { usePdfExport } from '../hooks/useExport.js'
 import { ShimmerButton } from './ui/AceternityComponents.jsx'
 import ExportPreviewModal from './Export/ExportPreviewModal.jsx'
+import ThemeToggle from './ui/ThemeToggle.jsx'
 import { useState } from 'react'
 
 const TOPIC_LABELS = {
@@ -29,13 +30,13 @@ export default function TopNavbar({ contentRef, activeTopic, onToggleMenu }) {
         activeTopic={activeTopic}
       />
       <header
-        className="flex h-14 items-center justify-between border-b border-white/[0.06] bg-surface-raised/80 px-4 sm:px-6 backdrop-blur-xl z-20 no-print"
+        className="flex h-14 items-center justify-between border-b border-border-subtle bg-surface-raised/80 px-4 sm:px-6 backdrop-blur-xl z-20 no-print"
         data-no-print
       >
       <div className="flex items-center gap-3">
         <button 
           onClick={onToggleMenu}
-          className="md:hidden flex items-center justify-center p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+          className="md:hidden flex items-center justify-center p-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-overlay transition-colors"
         >
           <Menu className="w-5 h-5" />
         </button>
@@ -53,6 +54,7 @@ export default function TopNavbar({ contentRef, activeTopic, onToggleMenu }) {
       </div>
 
       <div className="flex items-center gap-3">
+        <ThemeToggle />
         <div className="hidden sm:flex items-center gap-1.5 rounded-full bg-brand-500/10 px-3 py-1 border border-brand-500/20">
           <Sparkles className="h-3 w-3 text-brand-400" />
           <span className="text-[10px] font-medium text-brand-300">Interactive Live</span>

@@ -247,7 +247,7 @@ export default function KNNModule() {
               KNN computes the distance between query point <InlineMath math="q" /> and training point <InlineMath math="p" />. 
               The most common metric is the <strong>Minkowski distance</strong>:
             </p>
-            <div className="bg-black/30 p-4 rounded text-center my-2 text-brand-100 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-4 rounded text-center my-2 text-text-primary overflow-x-auto">
                <BlockMath math="D(q, p) = \left( \sum_{i=1}^n |q_i - p_i|^p \right)^{\frac{1}{p}}" />
             </div>
             
@@ -343,10 +343,10 @@ export default function KNNModule() {
             <div className="relative">
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center justify-between w-28 bg-white/[0.05] border border-white/[0.1] rounded-lg px-3 py-1.5 text-white hover:bg-white/[0.1] transition-colors"
+                className="flex items-center justify-between w-28 bg-white/[0.05] border border-white/[0.1] rounded-lg px-3 py-1.5 text-text-primary hover:bg-white/[0.1] transition-colors"
               >
                 <span className="capitalize">{weights}</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+                <ChevronDown className="w-3.5 h-3.5 text-text-muted" />
               </button>
               
               {isDropdownOpen && (
@@ -355,15 +355,15 @@ export default function KNNModule() {
                     className="fixed inset-0 z-40" 
                     onClick={() => setIsDropdownOpen(false)} 
                   />
-                  <div className="absolute top-full left-0 mt-2 w-32 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-50 overflow-hidden py-1">
+                  <div className="absolute top-full left-0 mt-2 w-32 bg-surface-raised border border-slate-700 rounded-xl shadow-2xl z-50 overflow-hidden py-1">
                     <button
-                      className={`w-full text-left px-3 py-2 text-sm text-white hover:bg-slate-800 transition-colors ${weights === 'uniform' ? 'bg-brand-500/20 text-brand-300' : ''}`}
+                      className={`w-full text-left px-3 py-2 text-sm text-text-primary hover:bg-surface-overlay transition-colors ${weights === 'uniform' ? 'bg-brand-500/20 text-brand-300' : ''}`}
                       onClick={() => { setWeights('uniform'); setIsDropdownOpen(false) }}
                     >
                       Uniform
                     </button>
                     <button
-                      className={`w-full text-left px-3 py-2 text-sm text-white hover:bg-slate-800 transition-colors ${weights === 'distance' ? 'bg-brand-500/20 text-brand-300' : ''}`}
+                      className={`w-full text-left px-3 py-2 text-sm text-text-primary hover:bg-surface-overlay transition-colors ${weights === 'distance' ? 'bg-brand-500/20 text-brand-300' : ''}`}
                       onClick={() => { setWeights('distance'); setIsDropdownOpen(false) }}
                     >
                       Distance
@@ -375,7 +375,7 @@ export default function KNNModule() {
           </div>
           <button
             onClick={exportPng}
-            className="ml-auto flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0"
+            className="ml-auto flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0"
           >
             <Download className="h-3.5 w-3.5" />
             Export Chart

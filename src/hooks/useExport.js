@@ -31,7 +31,7 @@ export function usePdfExport() {
             scale: 2,
             useCORS: true,
             allowTaint: false,
-            backgroundColor: '#0f1117',
+            backgroundColor: null,
             logging: false,
           })
           

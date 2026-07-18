@@ -203,7 +203,7 @@ export default function PCAModule() {
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               Mathematically, we compute the covariance matrix <InlineMath math="C" /> of the mean-centered data <InlineMath math="X" />, and then perform eigendecomposition:
             </p>
-            <div className="bg-black/30 p-2 rounded text-center my-2 text-cyan-100 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-2 rounded text-center my-2 text-text-primary overflow-x-auto">
               <BlockMath math="C = \frac{1}{n-1} X^T X" />
               <BlockMath math="C v = \lambda v" />
             </div>
@@ -214,7 +214,7 @@ export default function PCAModule() {
             <p className="text-sm text-text-secondary print-text-muted">
               The proportion of the dataset's total variance captured by a single principal component <InlineMath math="i" /> is computed as its eigenvalue divided by the sum of all eigenvalues:
             </p>
-            <div className="bg-black/30 p-2 rounded text-center my-2 text-cyan-100 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-2 rounded text-center my-2 text-text-primary overflow-x-auto">
               <BlockMath math="\text{Variance Ratio}_i = \frac{\lambda_i}{\sum_{j} \lambda_j}" />
             </div>
           </GlowCard>
@@ -303,7 +303,7 @@ export default function PCAModule() {
           </button>
           <button
             onClick={exportPng}
-            className="ml-auto flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0 whitespace-nowrap"
+            className="ml-auto flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0 whitespace-nowrap"
           >
             <Download className="h-3.5 w-3.5" />
             Export Chart

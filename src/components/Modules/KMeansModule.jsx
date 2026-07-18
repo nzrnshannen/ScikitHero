@@ -232,7 +232,7 @@ export default function KMeansModule() {
               <li>Update centroids to the mean of assigned points: <InlineMath math="\mu_k = \frac{1}{|S_k|} \sum_{x_i \in S_k} x_i" /></li>
               <li>Repeat steps 2-3 until convergence (centroids stop moving).</li>
             </ol>
-            <div className="bg-black/30 p-2 rounded text-center my-2 text-amber-100 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-2 rounded text-center my-2 text-text-primary overflow-x-auto">
               <BlockMath math="\text{Inertia} = \sum_{i=1}^{n} ||x_i - \mu_{c_i}||^2" />
             </div>
             
@@ -328,13 +328,13 @@ export default function KMeansModule() {
           </button>
           <button
             onClick={reset}
-            className="flex items-center gap-1 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0 whitespace-nowrap"
+            className="flex items-center gap-1 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0 whitespace-nowrap"
           >
             <RotateCcw className="h-3 w-3" /> Reset
           </button>
           <button
             onClick={exportPng}
-            className="ml-auto flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0 whitespace-nowrap"
+            className="ml-auto flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0 whitespace-nowrap"
           >
             <Download className="h-3.5 w-3.5" />
             Export Chart

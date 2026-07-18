@@ -269,7 +269,7 @@ export default function TuningModule() {
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               Always wrap your model in a Pipeline to prevent data leakage during Cross-Validation.
             </p>
-            <div className="bg-black/50 p-3 rounded-lg border border-white/[0.1] text-xs font-mono text-indigo-200 overflow-x-auto">
+            <div className="bg-surface-overlay/80 p-3 rounded-lg border border-white/[0.1] text-xs font-mono text-text-primary overflow-x-auto">
               <p><span className="text-pink-400">from</span> sklearn.pipeline <span className="text-pink-400">import</span> Pipeline</p>
               <p><span className="text-pink-400">from</span> sklearn.model_selection <span className="text-pink-400">import</span> GridSearchCV</p>
               <br/>
@@ -298,12 +298,12 @@ export default function TuningModule() {
               <button
                 onClick={() => setSearchType('grid')}
                 disabled={animState === 'running'}
-                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors ${searchType === 'grid' ? 'bg-pink-500/20 text-pink-400 font-bold' : 'text-text-secondary hover:text-white disabled:opacity-50'}`}
+                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors ${searchType === 'grid' ? 'bg-pink-500/20 text-pink-400 font-bold' : 'text-text-secondary hover:text-text-primary disabled:opacity-50'}`}
               >Grid Search</button>
               <button
                 onClick={() => setSearchType('random')}
                 disabled={animState === 'running'}
-                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors ${searchType === 'random' ? 'bg-pink-500/20 text-pink-400 font-bold' : 'text-text-secondary hover:text-white disabled:opacity-50'}`}
+                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors ${searchType === 'random' ? 'bg-pink-500/20 text-pink-400 font-bold' : 'text-text-secondary hover:text-text-primary disabled:opacity-50'}`}
               >Random Search</button>
           </div>
           
@@ -327,7 +327,7 @@ export default function TuningModule() {
              className={`flex items-center gap-1.5 rounded-lg px-4 py-1.5 text-xs font-bold transition-colors ml-auto shadow-lg
                ${animState === 'running' 
                   ? 'bg-rose-500/20 text-rose-400 hover:bg-rose-500/30 border border-rose-500/50' 
-                  : 'bg-pink-500 text-white hover:bg-pink-400 border border-pink-400'
+                  : 'bg-pink-500 text-text-primary hover:bg-pink-400 border border-pink-400'
                }`}
           >
              {animState === 'running' ? <Square className="w-4 h-4" /> : <Play className="w-4 h-4" />}
@@ -350,7 +350,7 @@ export default function TuningModule() {
               <div className="absolute top-4 left-4 flex flex-col items-start z-10">
                 <button
                   onClick={() => setIsMetricsExpanded(!isMetricsExpanded)}
-                  className="flex items-center gap-2 bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/[0.1] px-3 py-1.5 rounded-full shadow-lg transition-colors text-xs font-bold text-white mb-2"
+                  className="flex items-center gap-2 bg-surface-raised hover:bg-black/80 backdrop-blur-md border border-white/[0.1] px-3 py-1.5 rounded-full shadow-lg transition-colors text-xs font-bold text-text-primary mb-2"
                 >
                   <BarChart2 className="w-3.5 h-3.5 text-pink-400" />
                   Live Metrics
@@ -364,12 +364,12 @@ export default function TuningModule() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -10, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
-                      className="bg-black/70 p-4 rounded-xl border border-white/[0.1] backdrop-blur-md shadow-[0_0_20px_rgba(236,72,153,0.15)] min-w-[220px]"
+                      className="bg-surface-raised p-4 rounded-xl border border-white/[0.1] backdrop-blur-md shadow-[0_0_20px_rgba(236,72,153,0.15)] min-w-[220px]"
                     >
                        <p className="text-[10px] text-text-muted uppercase tracking-widest font-bold mb-3">Live Search Metrics</p>
                        <p className="text-xs text-text-secondary mb-2 flex justify-between">
                          <span>Models Trained:</span>
-                         <span className="font-mono text-white"><LiveValue value={totalModelsTrained} color="#ec4899"/></span>
+                         <span className="font-mono text-text-primary"><LiveValue value={totalModelsTrained} color="#ec4899"/></span>
                        </p>
                        <p className="text-xs text-text-secondary mb-2 flex justify-between">
                          <span>Highest CV Score:</span>
@@ -388,7 +388,7 @@ export default function TuningModule() {
               </div>
 
               {/* Accuracy Legend Overlay */}
-              <div className="absolute top-4 right-4 bg-black/60 p-2 rounded-lg border border-white/[0.1] backdrop-blur-md flex flex-col items-end gap-1 pointer-events-none shadow-lg">
+              <div className="absolute top-4 right-4 bg-surface-raised p-2 rounded-lg border border-white/[0.1] backdrop-blur-md flex flex-col items-end gap-1 pointer-events-none shadow-lg">
                  <span className="text-[10px] uppercase text-text-muted font-bold">Score</span>
                  <div className="w-24 h-2 rounded bg-gradient-to-r from-blue-500 to-green-500"></div>
                  <span className="text-[10px] text-text-muted font-mono">&gt; 90%</span>

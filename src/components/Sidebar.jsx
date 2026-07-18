@@ -14,7 +14,7 @@ export default function Sidebar({ activeTopic, setActiveTopic, onOpenDevCard, is
       )}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-white/[0.06] bg-surface-raised/95 backdrop-blur-md no-print transition-transform duration-300 ease-in-out md:static md:w-60 md:translate-x-0 md:bg-surface-raised/50",
+          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-border-subtle bg-surface-raised/95 backdrop-blur-md no-print transition-transform duration-300 ease-in-out md:static md:w-60 md:translate-x-0 md:bg-surface-raised/50",
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         )}
         data-no-print
@@ -36,8 +36,8 @@ export default function Sidebar({ activeTopic, setActiveTopic, onOpenDevCard, is
                     className={cn(
                       'relative flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm transition-all duration-200',
                       isActive
-                        ? 'text-white'
-                        : 'text-text-secondary hover:text-text-primary hover:bg-white/[0.03]'
+                        ? 'text-text-primary bg-surface-overlay border border-border-medium shadow-sm'
+                        : 'text-text-secondary hover:text-text-primary hover:bg-surface-overlay/50 border border-transparent'
                     )}
                   >
                     {isActive && (
@@ -73,10 +73,10 @@ export default function Sidebar({ activeTopic, setActiveTopic, onOpenDevCard, is
       </div>
 
       {/* Bottom brand */}
-      <div className="border-t border-white/[0.04] p-4 space-y-4">
+      <div className="border-t border-border-subtle p-4 space-y-4">
         <button
           onClick={onOpenDevCard}
-          className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-slate-800/40 hover:bg-slate-800 border border-slate-700/50 text-sm font-medium text-slate-300 hover:text-white transition-all group"
+          className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-surface-overlay hover:bg-surface-overlay/80 border border-border-medium text-sm font-medium text-text-secondary hover:text-text-primary transition-all group"
         >
           <span>Meet the Dev</span>
           <span className="text-base group-hover:scale-110 transition-transform">👩‍💻</span>
