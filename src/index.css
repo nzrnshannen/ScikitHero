@@ -53,8 +53,15 @@ body {
   color: #111111 !important;
 }
 
+/* Force modules to single column layout for printing */
+.printing .lg\:flex-row {
+  flex-direction: column !important;
+}
+
 .printing .print-white-bg {
   background: #ffffff !important;
+  border-right-width: 0 !important;
+  border-bottom-width: 1px !important;
   border-color: #e5e5e5 !important;
   color: #111111 !important;
 }
