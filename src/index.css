@@ -53,27 +53,30 @@ body {
   color: #111111 !important;
 }
 
-/* Force modules to single column layout for printing */
-.printing .lg\:flex-row {
+/* Force modules to single column layout when stacked */
+.layout-bottom .lg\:flex-row {
   flex-direction: column !important;
   height: auto !important;
 }
 
-.printing .overflow-y-auto,
-.printing .overflow-hidden {
+.layout-bottom .overflow-y-auto,
+.layout-bottom .overflow-hidden {
   overflow: visible !important;
 }
 
-.printing .min-h-0 {
+.layout-bottom .min-h-0 {
   min-height: auto !important;
 }
 
 .printing .print-white-bg {
   background: #ffffff !important;
+  color: #111111 !important;
+  border-color: #e5e5e5 !important;
+}
+
+.layout-bottom .print-white-bg {
   border-right-width: 0 !important;
   border-bottom-width: 1px !important;
-  border-color: #e5e5e5 !important;
-  color: #111111 !important;
 }
 
 .printing .print-text-dark {
