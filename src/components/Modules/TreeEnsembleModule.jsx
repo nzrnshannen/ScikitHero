@@ -326,7 +326,7 @@ export default function TreeEnsembleModule() {
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               A Decision Tree splits data iteratively based on feature values that maximize <strong>Information Gain</strong> or minimize <strong>Impurity</strong>.
             </p>
-            <div className="bg-black/30 p-3 rounded text-center my-2 text-amber-100 overflow-x-auto space-y-3 relative">
+            <div className="bg-surface-overlay/50 p-3 rounded text-center my-2 text-text-primary overflow-x-auto space-y-3 relative">
               <div className={`transition-opacity ${criterion === 'gini' ? 'opacity-100' : 'opacity-30'}`}>
                 <span className="text-[10px] uppercase tracking-wider text-amber-500/70 font-bold flex items-center justify-center gap-2">
                   Gini Impurity {criterion === 'gini' && <span className="bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded">Active</span>}
@@ -366,7 +366,7 @@ export default function TreeEnsembleModule() {
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               <strong>Boosting:</strong> Trains trees <em>sequentially</em>. Each new tree focuses specifically on correcting the errors (residuals) made by the previous ensemble of trees.
             </p>
-            <div className="bg-black/30 p-2 rounded text-center my-2 text-amber-100 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-2 rounded text-center my-2 text-text-primary overflow-x-auto">
                <BlockMath math="F_m(x) = F_{m-1}(x) + \alpha \cdot h_m(x)" />
             </div>
             <div className="bg-amber-500/10 p-2 rounded border border-amber-500/20 text-center mt-3">
@@ -384,19 +384,19 @@ export default function TreeEnsembleModule() {
           <div className="flex gap-1 bg-white/[0.05] p-1 rounded-lg border border-white/[0.06] sm:mb-0">
               <button
                 onClick={() => setActiveTab('dt')}
-                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors whitespace-nowrap ${activeTab === 'dt' ? 'bg-amber-500/20 text-amber-400 font-bold' : 'text-text-secondary hover:text-white'}`}
+                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors whitespace-nowrap ${activeTab === 'dt' ? 'bg-amber-500/20 text-amber-400 font-bold' : 'text-text-secondary hover:text-text-primary'}`}
               >
                 <GitBranch className="w-4 h-4" /> Decision Tree
               </button>
               <button
                 onClick={() => setActiveTab('rf')}
-                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors whitespace-nowrap ${activeTab === 'rf' ? 'bg-amber-500/20 text-amber-400 font-bold' : 'text-text-secondary hover:text-white'}`}
+                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors whitespace-nowrap ${activeTab === 'rf' ? 'bg-amber-500/20 text-amber-400 font-bold' : 'text-text-secondary hover:text-text-primary'}`}
               >
                 <GitMerge className="w-4 h-4" /> Random Forest
               </button>
               <button
                 onClick={() => setActiveTab('gb')}
-                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors whitespace-nowrap ${activeTab === 'gb' ? 'bg-amber-500/20 text-amber-400 font-bold' : 'text-text-secondary hover:text-white'}`}
+                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors whitespace-nowrap ${activeTab === 'gb' ? 'bg-amber-500/20 text-amber-400 font-bold' : 'text-text-secondary hover:text-text-primary'}`}
               >
                 <GitPullRequestDraft className="w-4 h-4" /> Gradient Boosting
               </button>
@@ -407,17 +407,17 @@ export default function TreeEnsembleModule() {
         <div className="flex flex-col border-b border-white/[0.06] items-center p-6 shrink-0">
            {/* Controls Row */}
            <div className="w-full max-w-[400px] flex justify-between items-center mb-4 shrink-0">
-             <div className="flex gap-2 bg-black/50 p-2 rounded-lg border border-white/[0.1] backdrop-blur-sm shadow-[0_0_20px_rgba(245,158,11,0.1)]">
+             <div className="flex gap-2 bg-surface-overlay/80 p-2 rounded-lg border border-white/[0.1] backdrop-blur-sm shadow-[0_0_20px_rgba(245,158,11,0.1)]">
                <button 
                   onClick={() => setNextClass(0)}
-                  className={`px-3 py-1 rounded text-xs font-bold transition-colors whitespace-nowrap flex items-center gap-1 ${nextClass === 0 ? 'bg-rose-500 text-white' : 'bg-white/[0.1] text-text-muted hover:bg-white/[0.2]'}`}
+                  className={`px-3 py-1 rounded text-xs font-bold transition-colors whitespace-nowrap flex items-center gap-1 ${nextClass === 0 ? 'bg-rose-500 text-text-primary' : 'bg-white/[0.1] text-text-muted hover:bg-white/[0.2]'}`}
                ><MousePointer2 className="w-3 h-3"/> Plot Red</button>
                <button 
                   onClick={() => setNextClass(1)}
-                  className={`px-3 py-1 rounded text-xs font-bold transition-colors whitespace-nowrap flex items-center gap-1 ${nextClass === 1 ? 'bg-blue-500 text-white' : 'bg-white/[0.1] text-text-muted hover:bg-white/[0.2]'}`}
+                  className={`px-3 py-1 rounded text-xs font-bold transition-colors whitespace-nowrap flex items-center gap-1 ${nextClass === 1 ? 'bg-blue-500 text-text-primary' : 'bg-white/[0.1] text-text-muted hover:bg-white/[0.2]'}`}
                ><MousePointer2 className="w-3 h-3"/> Plot Blue</button>
              </div>
-             <button onClick={() => setPoints([])} className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white transition-colors border border-white/[0.06] shrink-0 whitespace-nowrap">
+             <button onClick={() => setPoints([])} className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary transition-colors border border-white/[0.06] shrink-0 whitespace-nowrap">
                 <Trash2 className="w-3.5 h-3.5" /> Clear Points
              </button>
            </div>
@@ -437,14 +437,14 @@ export default function TreeEnsembleModule() {
         <div className="flex flex-col shrink-0 min-h-[400px]">
           
            <div className="flex flex-wrap items-center gap-4 p-4 border-b border-white/[0.06] bg-surface-raised/20 shrink-0">
-             <div className="flex gap-1 bg-black/40 p-1 rounded-lg border border-white/[0.05]">
+             <div className="flex gap-1 bg-surface-overlay/60 p-1 rounded-lg border border-white/[0.05]">
                 <button
                   onClick={() => setCriterion('gini')}
-                  className={`px-3 py-1 text-xs rounded transition-colors ${criterion === 'gini' ? 'bg-white/[0.15] text-white font-bold' : 'text-text-secondary hover:text-white'}`}
+                  className={`px-3 py-1 text-xs rounded transition-colors ${criterion === 'gini' ? 'bg-white/[0.15] text-text-primary font-bold' : 'text-text-secondary hover:text-text-primary'}`}
                 >Gini</button>
                 <button
                   onClick={() => setCriterion('entropy')}
-                  className={`px-3 py-1 text-xs rounded transition-colors ${criterion === 'entropy' ? 'bg-white/[0.15] text-white font-bold' : 'text-text-secondary hover:text-white'}`}
+                  className={`px-3 py-1 text-xs rounded transition-colors ${criterion === 'entropy' ? 'bg-white/[0.15] text-text-primary font-bold' : 'text-text-secondary hover:text-text-primary'}`}
                 >Entropy</button>
              </div>
              

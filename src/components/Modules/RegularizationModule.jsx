@@ -166,7 +166,7 @@ export default function RegularizationModule() {
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               Adds a penalty equal to the <strong>square of the magnitude</strong> of coefficients. It shrinks all coefficients towards zero, but rarely exactly to zero.
             </p>
-            <div className="bg-black/30 p-2 rounded text-center my-2 text-purple-200 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-2 rounded text-center my-2 text-text-primary overflow-x-auto">
               <BlockMath math="J(w) = \text{MSE} + \alpha \sum_{j=1}^{p} w_j^2" />
             </div>
             <ul className="text-sm text-text-secondary list-disc ml-5 print-text-muted">
@@ -180,7 +180,7 @@ export default function RegularizationModule() {
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               Adds a penalty equal to the <strong>absolute value of the magnitude</strong> of coefficients. It can shrink coefficients <em>exactly to zero</em>, effectively performing feature selection.
             </p>
-            <div className="bg-black/30 p-2 rounded text-center my-2 text-purple-200 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-2 rounded text-center my-2 text-text-primary overflow-x-auto">
               <BlockMath math="J(w) = \text{MSE} + \alpha \sum_{j=1}^{p} |w_j|" />
             </div>
             <ul className="text-sm text-text-secondary list-disc ml-5 print-text-muted">
@@ -208,13 +208,13 @@ export default function RegularizationModule() {
           <div className="flex gap-1 bg-white/[0.05] p-1 rounded-lg border border-white/[0.06] shrink-0">
              <button
                onClick={() => setRegType('L2')}
-               className={`px-3 py-1 text-xs rounded transition-colors whitespace-nowrap ${regType === 'L2' ? 'bg-blue-500/20 text-blue-400 font-bold' : 'text-text-secondary hover:text-white'}`}
+               className={`px-3 py-1 text-xs rounded transition-colors whitespace-nowrap ${regType === 'L2' ? 'bg-blue-500/20 text-blue-400 font-bold' : 'text-text-secondary hover:text-text-primary'}`}
              >
                L2 (Ridge)
              </button>
              <button
                onClick={() => setRegType('L1')}
-               className={`px-3 py-1 text-xs rounded transition-colors whitespace-nowrap ${regType === 'L1' ? 'bg-purple-500/20 text-purple-400 font-bold' : 'text-text-secondary hover:text-white'}`}
+               className={`px-3 py-1 text-xs rounded transition-colors whitespace-nowrap ${regType === 'L1' ? 'bg-purple-500/20 text-purple-400 font-bold' : 'text-text-secondary hover:text-text-primary'}`}
              >
                L1 (Lasso)
              </button>
@@ -229,7 +229,7 @@ export default function RegularizationModule() {
           </label>
           <button
             onClick={exportPng}
-            className="ml-auto flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0 whitespace-nowrap"
+            className="ml-auto flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0 whitespace-nowrap"
           >
             <Download className="h-3.5 w-3.5" />
             Export Chart

@@ -8,8 +8,8 @@ export function GlowCard({ children, className, glowColor = 'rgba(139, 92, 246, 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
       className={cn(
-        'relative rounded-xl border border-white/[0.06] bg-[#12121a] p-5 backdrop-blur-sm',
-        'shadow-[0_0_0_1px_rgba(255,255,255,0.03)] hover:shadow-[0_0_30px_-5px_var(--glow)]',
+        'relative rounded-xl border border-border-subtle bg-surface-raised p-5 backdrop-blur-sm',
+        'shadow-sm hover:shadow-[0_0_30px_-5px_var(--glow)]',
         'transition-shadow duration-500',
         className
       )}
@@ -30,7 +30,7 @@ export function GlassPanel({ children, className, ...props }) {
   return (
     <div
       className={cn(
-        'rounded-xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-md',
+        'rounded-xl border border-border-subtle bg-surface-overlay backdrop-blur-md',
         className
       )}
       {...props}

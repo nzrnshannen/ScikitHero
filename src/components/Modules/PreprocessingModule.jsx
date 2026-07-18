@@ -386,7 +386,7 @@ X_test_scaled = scaler.transform(X_test)
                 onClick={() => setMode(m)}
                 className={`relative rounded-lg px-3 py-1.5 text-xs font-medium transition-all duration-300 border ${
                   mode === m
-                    ? 'text-white'
+                    ? 'text-text-primary'
                     : 'text-text-secondary hover:text-text-primary border-white/[0.06] hover:bg-white/[0.05]'
                 }`}
                 style={
@@ -416,7 +416,7 @@ X_test_scaled = scaler.transform(X_test)
           </div>
           <button
             onClick={exportPng}
-            className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white hover:bg-white/[0.1] transition-colors border border-white/[0.06]"
+            className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary hover:bg-white/[0.1] transition-colors border border-white/[0.06]"
           >
             <Download className="h-3.5 w-3.5" />
             Export Chart Only (PNG)

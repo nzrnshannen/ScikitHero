@@ -337,13 +337,13 @@ export default function SVMModule() {
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               For a linearly separable dataset, the decision boundary is an explicit line (or hyperplane in higher dimensions) defined by:
             </p>
-            <div className="bg-black/30 p-2 rounded text-center my-2 text-indigo-200 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-2 rounded text-center my-2 text-text-primary overflow-x-auto">
               <BlockMath math="w \cdot x + b = 0" />
             </div>
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               The margin boundaries where the Support Vectors lie are defined by <InlineMath math="w \cdot x + b = \pm 1" />. The total width of the margin we aim to maximize is:
             </p>
-            <div className="bg-black/30 p-2 rounded text-center my-2 text-indigo-200 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-2 rounded text-center my-2 text-text-primary overflow-x-auto">
               <BlockMath math="M = \frac{2}{||w||}" />
             </div>
           </GlowCard>
@@ -383,11 +383,11 @@ export default function SVMModule() {
            <div className="flex gap-1 bg-white/[0.05] p-1 rounded-lg border border-white/[0.06]">
               <button
                 onClick={() => setKernel('linear')}
-                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors ${kernel === 'linear' ? 'bg-indigo-500/20 text-indigo-400 font-bold' : 'text-text-secondary hover:text-white'}`}
+                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors ${kernel === 'linear' ? 'bg-indigo-500/20 text-indigo-400 font-bold' : 'text-text-secondary hover:text-text-primary'}`}
               >Linear</button>
               <button
                 onClick={() => setKernel('rbf')}
-                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors ${kernel === 'rbf' ? 'bg-indigo-500/20 text-indigo-400 font-bold' : 'text-text-secondary hover:text-white'}`}
+                className={`px-3 py-1.5 flex items-center gap-2 text-xs rounded transition-colors ${kernel === 'rbf' ? 'bg-indigo-500/20 text-indigo-400 font-bold' : 'text-text-secondary hover:text-text-primary'}`}
               >RBF (Non-linear)</button>
           </div>
           
@@ -402,7 +402,7 @@ export default function SVMModule() {
             />
           </label>
 
-          <button onClick={() => setPoints(generateData())} className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white transition-colors ml-auto">
+          <button onClick={() => setPoints(generateData())} className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary transition-colors ml-auto">
              <RefreshCw className="w-3.5 h-3.5" /> Reset Data
           </button>
         </div>
@@ -411,14 +411,14 @@ export default function SVMModule() {
         <div className="flex-1 flex flex-col items-center p-6 gap-6 overflow-y-auto">
            {/* Draggable Sandbox HUD */}
            <div className="w-full max-w-[500px] flex justify-between items-start shrink-0 pointer-events-none relative z-20">
-             <div className="flex gap-2 pointer-events-auto bg-black/50 p-2 rounded-lg border border-white/[0.1] backdrop-blur-sm shadow-[0_0_20px_rgba(99,102,241,0.15)]">
+             <div className="flex gap-2 pointer-events-auto bg-surface-overlay/80 p-2 rounded-lg border border-white/[0.1] backdrop-blur-sm shadow-[0_0_20px_rgba(99,102,241,0.15)]">
                 <button 
                   onClick={() => setNextClass(1)}
-                  className={`px-3 py-1 rounded text-xs font-bold transition-colors flex items-center gap-1 ${nextClass === 1 ? 'bg-blue-500 text-white' : 'bg-white/[0.1] text-text-muted hover:bg-white/[0.2]'}`}
+                  className={`px-3 py-1 rounded text-xs font-bold transition-colors flex items-center gap-1 ${nextClass === 1 ? 'bg-blue-500 text-text-primary' : 'bg-white/[0.1] text-text-muted hover:bg-white/[0.2]'}`}
                 ><MousePointer2 className="w-3 h-3"/> Add Blue</button>
                 <button 
                   onClick={() => setNextClass(-1)}
-                  className={`px-3 py-1 rounded text-xs font-bold transition-colors flex items-center gap-1 ${nextClass === -1 ? 'bg-rose-500 text-white' : 'bg-white/[0.1] text-text-muted hover:bg-white/[0.2]'}`}
+                  className={`px-3 py-1 rounded text-xs font-bold transition-colors flex items-center gap-1 ${nextClass === -1 ? 'bg-rose-500 text-text-primary' : 'bg-white/[0.1] text-text-muted hover:bg-white/[0.2]'}`}
                 ><MousePointer2 className="w-3 h-3"/> Add Red</button>
              </div>
              
@@ -429,7 +429,7 @@ export default function SVMModule() {
                    const panel = document.getElementById('svm-state-panel');
                    if (panel) panel.classList.toggle('hidden');
                  }}
-                 className="w-10 h-10 rounded-full bg-black/50 border border-white/[0.1] backdrop-blur-sm shadow-[0_0_20px_rgba(99,102,241,0.15)] flex items-center justify-center text-indigo-400 hover:text-white hover:bg-indigo-500/20 transition-all hover:scale-105 active:scale-95"
+                 className="w-10 h-10 rounded-full bg-surface-overlay/80 border border-white/[0.1] backdrop-blur-sm shadow-[0_0_20px_rgba(99,102,241,0.15)] flex items-center justify-center text-indigo-400 hover:text-text-primary hover:bg-indigo-500/20 transition-all hover:scale-105 active:scale-95"
                  title="Toggle Live SVM State"
                >
                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-activity"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>

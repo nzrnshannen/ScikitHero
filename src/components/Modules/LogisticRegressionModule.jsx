@@ -187,7 +187,7 @@ export default function LogisticRegressionModule() {
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               It takes the output of a linear equation (<InlineMath math="z = wx + b" />) and maps it to a value between 0 and 1 using the <strong>Sigmoid (logistic) function</strong>:
             </p>
-            <div className="bg-black/30 p-4 rounded text-center my-3 text-emerald-100 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-4 rounded text-center my-3 text-text-primary overflow-x-auto">
               <BlockMath math="\sigma(z) = \frac{1}{1 + e^{-z}}" />
             </div>
             <p className="text-sm text-text-secondary print-text-muted">
@@ -250,7 +250,7 @@ export default function LogisticRegressionModule() {
           </label>
           <button
             onClick={exportPng}
-            className="ml-auto flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0"
+            className="ml-auto flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary hover:bg-white/[0.1] transition-colors border border-white/[0.06] shrink-0"
           >
             <Download className="h-3.5 w-3.5" />
             Export Chart

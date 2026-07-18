@@ -180,19 +180,19 @@ export default function LinearRegressionModule() {
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               The goal of Ordinary Least Squares (OLS) is to minimize the <strong>Sum of Squared Errors (SSE)</strong>. A residual (error) is the vertical distance between the actual data point and the predicted line:
             </p>
-            <div className="bg-black/30 p-2 rounded text-center my-2 text-emerald-100 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-2 rounded text-center my-2 text-text-primary overflow-x-auto">
               <BlockMath math="\text{Residual } e_i = y_i - \hat{y}_i" />
             </div>
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               We square these residuals so negative and positive errors don't cancel out, and larger errors are penalized more heavily. The cost function <InlineMath math="J(m, b)" /> is:
             </p>
-            <div className="bg-black/30 p-2 rounded text-center my-2 text-emerald-100 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-2 rounded text-center my-2 text-text-primary overflow-x-auto">
               <BlockMath math="J(m, b) = \sum_{i=1}^{n} (y_i - (m x_i + b))^2" />
             </div>
             <p className="text-sm text-text-secondary mb-2 print-text-muted">
               By taking the partial derivatives of <InlineMath math="J" /> with respect to <InlineMath math="m" /> and <InlineMath math="b" />, and setting them to zero, we derive the closed-form normal equations:
             </p>
-            <div className="bg-black/30 p-2 rounded text-center my-2 text-emerald-100 overflow-x-auto">
+            <div className="bg-surface-overlay/50 p-2 rounded text-center my-2 text-text-primary overflow-x-auto">
               <BlockMath math="m = \frac{n(\sum x_iy_i) - (\sum x_i)(\sum y_i)}{n(\sum x_i^2) - (\sum x_i)^2}" />
               <BlockMath math="b = \frac{\sum y_i - m(\sum x_i)}{n}" />
             </div>
@@ -251,14 +251,14 @@ export default function LinearRegressionModule() {
         <div className="flex items-center justify-between border-b border-white/[0.06] px-4 py-2 bg-surface-raised/50 no-print" data-no-print>
           <button
             onClick={() => setPoints(INITIAL_POINTS)}
-            className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white hover:bg-white/[0.1] transition-colors border border-white/[0.06]"
+            className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary hover:bg-white/[0.1] transition-colors border border-white/[0.06]"
           >
             <Trash2 className="h-3.5 w-3.5" />
             Reset Points
           </button>
           <button
             onClick={exportPng}
-            className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-white hover:bg-white/[0.1] transition-colors border border-white/[0.06]"
+            className="flex items-center gap-1.5 rounded-lg bg-white/[0.05] px-3 py-1.5 text-xs text-text-secondary hover:text-text-primary hover:bg-white/[0.1] transition-colors border border-white/[0.06]"
           >
             <Download className="h-3.5 w-3.5" />
             Export Chart Only (PNG)

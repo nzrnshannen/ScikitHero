@@ -49,7 +49,7 @@ export default function EvaluationModule() {
                <div>
                   <h3 className="text-sm font-bold text-blue-400">Precision</h3>
                   <p className="text-xs text-text-secondary mb-1 print-text-muted">Out of all the positive predictions, how many were actually positive?</p>
-                  <div className="bg-black/30 p-2 rounded text-center text-blue-200 overflow-x-auto">
+                  <div className="bg-surface-overlay/50 p-2 rounded text-center text-text-primary overflow-x-auto">
                     <BlockMath math="\text{Precision} = \frac{TP}{TP + FP}" />
                   </div>
                </div>
@@ -57,7 +57,7 @@ export default function EvaluationModule() {
                <div>
                   <h3 className="text-sm font-bold text-blue-400">Recall (Sensitivity / TPR)</h3>
                   <p className="text-xs text-text-secondary mb-1 print-text-muted">Out of all the actual positive instances, how many did we find?</p>
-                  <div className="bg-black/30 p-2 rounded text-center text-blue-200 overflow-x-auto">
+                  <div className="bg-surface-overlay/50 p-2 rounded text-center text-text-primary overflow-x-auto">
                     <BlockMath math="\text{Recall} = \frac{TP}{TP + FN}" />
                   </div>
                </div>
@@ -65,7 +65,7 @@ export default function EvaluationModule() {
                <div>
                   <h3 className="text-sm font-bold text-blue-400">F1 Score</h3>
                   <p className="text-xs text-text-secondary mb-1 print-text-muted">The harmonic mean of Precision and Recall. Useful when you need a balance.</p>
-                  <div className="bg-black/30 p-2 rounded text-center text-blue-200 overflow-x-auto">
+                  <div className="bg-surface-overlay/50 p-2 rounded text-center text-text-primary overflow-x-auto">
                     <BlockMath math="F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}" />
                   </div>
                </div>
@@ -110,7 +110,7 @@ export default function EvaluationModule() {
                  </div>
                  <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-4 flex flex-col items-center shadow-[0_0_20px_rgba(59,130,246,0.05)]">
                     <span className="text-xs text-text-muted uppercase tracking-widest font-semibold mb-1">Accuracy</span>
-                    <span className="text-2xl font-mono font-bold text-slate-300"><LiveValue value={accuracy.toFixed(3)} color="#cbd5e1" /></span>
+                    <span className="text-2xl font-mono font-bold text-text-secondary"><LiveValue value={accuracy.toFixed(3)} color="#cbd5e1" /></span>
                  </div>
               </div>
            </div>
@@ -203,7 +203,7 @@ export default function EvaluationModule() {
 
            <div className="mt-8 text-center bg-white/[0.02] border border-white/[0.05] rounded p-3">
              <p className="text-xs text-text-muted mb-1 uppercase tracking-widest font-semibold">Total Observations</p>
-             <p className="text-xl font-mono font-bold text-slate-300">N = {total}</p>
+             <p className="text-xl font-mono font-bold text-text-secondary">N = {total}</p>
            </div>
            
         </div>
