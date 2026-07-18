@@ -1,11 +1,12 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, FileDown, CheckSquare, Square, FileText, Layers, Loader2 } from 'lucide-react'
+import { X, FileDown, CheckSquare, Square, FileText, Layers, Loader2, PanelBottom, PanelRight } from 'lucide-react'
 import { useState, useRef } from 'react'
 import { GROUPS, MODULE_COMPONENTS } from '../../lib/curriculum.js'
 import { useBotState } from '../../lib/BotContext.jsx'
 
 export default function ExportPreviewModal({ isOpen, onClose, onExport, activeTopic }) {
   const [scope, setScope] = useState('current') // 'current' or 'all'
+  const [chartLayout, setChartLayout] = useState('bottom') // 'bottom' or 'right'
   const [includeChat, setIncludeChat] = useState(false)
   const [isExporting, setIsExporting] = useState(false)
   const previewRef = useRef(null)
@@ -120,6 +121,34 @@ export default function ExportPreviewModal({ isOpen, onClose, onExport, activeTo
                     </div>
                   </div>
 
+                  {/* Layout Selection */}
+                  <div className="space-y-3">
+                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Chart Layout</label>
+                    <div className="grid gap-3">
+                      <button 
+                        onClick={() => setChartLayout('bottom')}
+                        className={`flex flex-col text-left p-4 rounded-xl border transition-all ${chartLayout === 'bottom' ? 'bg-brand-500/10 border-brand-500/50' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <PanelBottom className={`w-4 h-4 ${chartLayout === 'bottom' ? 'text-brand-400' : 'text-slate-400'}`} />
+                          <span className={`font-medium ${chartLayout === 'bottom' ? 'text-brand-300' : 'text-slate-200'}`}>Stacked (Bottom)</span>
+                        </div>
+                        <span className="text-xs text-slate-400 pl-6">Chart spans full width below the lesson text.</span>
+                      </button>
+
+                      <button 
+                        onClick={() => setChartLayout('right')}
+                        className={`flex flex-col text-left p-4 rounded-xl border transition-all ${chartLayout === 'right' ? 'bg-brand-500/10 border-brand-500/50' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <PanelRight className={`w-4 h-4 ${chartLayout === 'right' ? 'text-brand-400' : 'text-slate-400'}`} />
+                          <span className={`font-medium ${chartLayout === 'right' ? 'text-brand-300' : 'text-slate-200'}`}>Side-by-Side (Right)</span>
+                        </div>
+                        <span className="text-xs text-slate-400 pl-6">Chart sits next to the lesson text (best for wide pages).</span>
+                      </button>
+                    </div>
+                  </div>
+
                   {/* Options */}
                   <div className="space-y-3">
                     <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Options</label>
@@ -188,9 +217,9 @@ export default function ExportPreviewModal({ isOpen, onClose, onExport, activeTo
                   return (
                     <div 
                       key={topicId} 
-                      className="chapter-page bg-surface flex flex-col border border-slate-800/60 shadow-2xl shadow-black/50 rounded-md w-[210mm] min-h-[297mm] overflow-hidden relative shrink-0"
+                      className={`chapter-page layout-${chartLayout} bg-surface flex flex-col border border-slate-800/60 shadow-2xl shadow-black/50 rounded-md w-[210mm] min-h-[297mm] overflow-visible relative shrink-0`}
                     >
-                       <div className="flex-1 w-full flex flex-col relative h-[297mm]">
+                       <div className="flex-1 w-full flex flex-col relative min-h-[297mm] h-max">
                          <ModuleComponent />
                        </div>
                        
